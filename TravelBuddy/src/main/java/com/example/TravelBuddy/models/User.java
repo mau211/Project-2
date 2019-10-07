@@ -13,7 +13,7 @@ import java.util.List;
         property = "id")
 @Entity
 @Table(name = "users")
-public class User<UserRole, Course> {
+public class User {
     ///creating columns
     @Id
     @Column
@@ -30,41 +30,54 @@ public class User<UserRole, Course> {
     @JoinColumn(name="user_profile_id")
     private UserProfile userProfile;
 
-    @ManyToOne(cascade = {CascadeType.DETACH,
-            CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "user_role_id", nullable = false)
-    private UserRole userRole;
+//    @ManyToOne(cascade = {CascadeType.DETACH,
+//            CascadeType.MERGE, CascadeType.REFRESH})
+//    @JoinColumn(name = "user_role_id", nullable = false)
+//    private UserRole userRole;
+
+
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "post_id")
 
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {CascadeType.DETACH,
-                    CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinTable(name = "user_course",
-            joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = @JoinColumn(name = "course_id"))
-    private List<Course> courses;
+    private List<Post> posts;
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+//    @ManyToMany(fetch = FetchType.LAZY,
+//            cascade = {CascadeType.DETACH,
+//                    CascadeType.MERGE, CascadeType.REFRESH})
+//    @JoinTable(name = "user_course",
+//            joinColumns = {@JoinColumn(name = "user_id")},
+//            inverseJoinColumns = @JoinColumn(name = "course_id"))
+//    private List<Course> courses;
     //user constructor
     public User() {}
     ///ad course is a method.
-    public List<Course> addCourse(Course course){
-        if(courses == null)
-            courses = new ArrayList<>();
-        courses.add(course);
+//    public List<Course> addCourse(Course course){
+//        if(courses == null)
+//            courses = new ArrayList<>();
+//        courses.add(course);
+//
+//        return courses;
+//    }
+//
+//    public List<Course> getCourses(){ return courses; }
+//
+//    public void setCourses(List<Course> courses) { this.courses = courses; }
 
-        return courses;
-    }
-
-    public List<Course> getCourses(){ return courses; }
-
-    public void setCourses(List<Course> courses) { this.courses = courses; }
-
-    public UserRole getUserRole() { return userRole; }
-
-    public void setUserRole(UserRole userRole) { this.userRole = userRole; }
-
-    public UserProfile getUserProfile() { return userProfile; }
-
+//    public UserRole getUserRole() { return userRole; }
+//
+//    public void setUserRole(UserRole userRole) { this.userRole = userRole; }
+//
+//    public UserProfile getUserProfile() { return userProfile; }
+//
     public void setUserProfile(UserProfile userProfile) { this.userProfile = userProfile; }
 
     public Long getId() {
