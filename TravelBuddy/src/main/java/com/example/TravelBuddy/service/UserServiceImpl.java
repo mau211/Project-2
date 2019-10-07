@@ -1,94 +1,104 @@
 package com.example.TravelBuddy.service;
 
 
-
 import com.example.TravelBuddy.config.JwtUtil;
 import com.example.TravelBuddy.models.Post;
 import com.example.TravelBuddy.models.User;
-import org.springframework.context.annotation.Bean;
+import com.example.TravelBuddy.repository.PostRepository;
 import com.example.TravelBuddy.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
+    UserRepository userRepository;
+
+
+    @Autowired
+    PostService postService;
+
+    @Autowired
+    PostRepository postRepository;
+
+    @Autowired
     JwtUtil jwtUtil;
 
-    @Override
-    public String login(User user){
-        if(userRepository.login(user.getUsername(), user.getPassword()) != null){
-            UserDetails userDetails = loadUserByUsername(user.getUsername());
-            return jwtUtil.generateToken(userDetails);
-        }
-        return null;
-    }
-    @Autowired
-    UserRepository userRepository;
-//    @Autowired
-//    UserRoleService userRoleService;
-//    @Autowired
-//    CourseService courseService;
-//    @Autowired
-//    CourseRepository courseRepository;
+
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        User user = getUser(username);
+//
+//        if(user==null)
+//            throw new UsernameNotFoundException("User null");
+//        // Code edited to not include bCrypt
+//        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
+//                true, true, true, true, getGrantedAuthorities(user));
+//    }
+//
+//    private List<GrantedAuthority> getGrantedAuthorities(User user){
+//        List<GrantedAuthority> authorities = new ArrayList<>();
+//
+//        authorities.add(new SimpleGrantedAuthority(user.getUserRole().getName()));
+//
+//        return authorities;
+//    }
+
     @Override
     public User getUser(String username) {
         return userRepository.findByUsername(username);
     }
+
     @Override
     public Iterable<User> listUsers() {
         return userRepository.findAll();
     }
+
     @Override
-    public User createUser(User newUser) {
+    public String createUser(User newUser) {
 //        UserRole userRole = userRoleService.getRole(newUser.getUserRole().getName());
 //        newUser.setUserRole(userRole);
-        return userRepository.save(newUser);
+        newUser.setPassword(newUser.getPassword());
+        if(userRepository.save(newUser) != null){
+            UserDetails userDetails = loadUserByUsername(newUser.getUsername());
+            return jwtUtil.generateToken(userDetails);
+        }
+        return null;
     }
+
     @Override
-    public User login(String username, String password) {
-        return userRepository.login(username, password);
+    public String login(User user){
+        User newUser = userRepository.findByUsername(user.getUsername());
+//      Code edited to not use default bCrypt for password.
+        if(newUser != null && user.getPassword().equals(newUser.getPassword())){
+            UserDetails userDetails = loadUserByUsername(newUser.getUsername());
+            return jwtUtil.generateToken(userDetails);
+        }
+        return null;
     }
-//    @Override
-//    public User addCourse(String username, int courseId) {
-//        Course course = courseRepository.findById(courseId).get();
-//        User user = getUser(username);
-//        user.addCourse(course);
-//        return userRepository.save(user);
-//    }
+
+    @Override
+    public User addPost(String username, long postId) {
+        Post post = postRepository.findById(postId).get();
+        User user = getUser(username);
+        user.addPost(post);
+
+        return userRepository.save(user);
+    }
+
     @Override
     public HttpStatus deleteById(Long userId){
         userRepository.deleteById(userId);
         return HttpStatus.OK;
     }
-    @Override
-    public Post addPost(String username, long postId) {
-        return null;
-    }
-
-    @Autowired
-    @Qualifier("encoder")
-    PasswordEncoder bCryptPasswordEncoder;
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = getUser(username);
-        if(user==null)
-            throw new UsernameNotFoundException("User null");
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), bCryptPasswordEncoder.encode(user.getPassword()),
-                true, true, true, true, new ArrayList<>());
-    }
-//    private List<GrantedAuthority> getGrantedAuthorities(User user){
-//        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-//        authorities.add(new SimpleGrantedAuthority(user.getUserRole().getName()));
-//        return authorities;
-
 
 }
