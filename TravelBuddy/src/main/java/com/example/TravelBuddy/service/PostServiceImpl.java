@@ -6,6 +6,7 @@ import com.example.TravelBuddy.models.User;
 import com.example.TravelBuddy.repository.PostRepository;
 import com.example.TravelBuddy.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,5 +29,14 @@ public class PostServiceImpl implements PostService {
                 return postRepository.save(post);
     }
 
+    @Override
+    public HttpStatus deleteById(Long postId) {
+        postRepository.deleteById(postId);
+        return HttpStatus.OK;
+    }
 
 }
+
+
+
+

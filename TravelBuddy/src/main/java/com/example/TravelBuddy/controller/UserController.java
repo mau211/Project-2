@@ -1,6 +1,7 @@
 package com.example.TravelBuddy.controller;
 
 
+import com.example.TravelBuddy.models.JwtResponse;
 import com.example.TravelBuddy.models.User;
 import com.example.TravelBuddy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,20 +16,20 @@ public class UserController {
     @Autowired
     UserService userService;
 
-//    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @GetMapping("/admin/u/list")
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody User user) {
+        return ResponseEntity.ok(new JwtResponse(userService.login(user)));
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/user/list")
     public Iterable<User> listUsers() {
         return userService. listUsers();
     }
 
     @PostMapping("/signup")
-    public User createUser(@RequestBody User newUser) {
-        return userService.createUser(newUser);
-    }
-
-    @GetMapping("/login/{username}/{password}")
-    public User login(@PathVariable String username, @PathVariable String password){
-        return userService.login(username, password);
+    public ResponseEntity<?> createUser(@RequestBody User newUser) {
+        return ResponseEntity.ok(new JwtResponse(userService.createUser(newUser)));
     }
 
     @PutMapping("/user/{username}/{postId}")
@@ -44,11 +45,6 @@ public class UserController {
     @GetMapping("/hello")
     public String helloWorld() {
         return "Hello World!!";
-    }
-
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody User user) {
-        return ResponseEntity.ok(new JwtResponse(userService.login(user)));
     }
 
 }

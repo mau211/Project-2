@@ -59,6 +59,13 @@ public class User {
 //    private List<Course> courses;
     //user constructor
     public User() {}
+
+    public void addPost(Post post){
+        if(posts == null)
+            posts = new ArrayList<>();
+        posts.add(post);
+
+    }
     ///ad course is a method.
 //    public List<Course> addCourse(Course course){
 //        if(courses == null)

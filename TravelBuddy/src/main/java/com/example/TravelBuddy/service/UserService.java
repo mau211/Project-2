@@ -11,7 +11,7 @@ public interface UserService extends UserDetailsService {
 
     public Iterable<User> listUsers();
 
-    public User createUser(User newUser);
+    public String createUser(User newUser);
 
     public User login(String username, String password);
 
@@ -19,6 +19,7 @@ public interface UserService extends UserDetailsService {
 
     public HttpStatus deleteById(Long userId);
 
-    public Post addPost(String username, long postId);
+    public User addPost(String username, long postId);
+
 }
 
