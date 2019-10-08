@@ -29,13 +29,6 @@ public class User {
     @JoinColumn(name="user_profile_id")
     private UserProfile userProfile;
 
-//    @ManyToOne(cascade = {CascadeType.DETACH,
-//            CascadeType.MERGE, CascadeType.REFRESH})
-//    @JoinColumn(name = "user_role_id", nullable = false)
-//    private UserRole userRole;
-
-
-
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "post_id")
 
@@ -49,14 +42,6 @@ public class User {
         this.posts = posts;
     }
 
-//    @ManyToMany(fetch = FetchType.LAZY,
-//            cascade = {CascadeType.DETACH,
-//                    CascadeType.MERGE, CascadeType.REFRESH})
-//    @JoinTable(name = "user_course",
-//            joinColumns = {@JoinColumn(name = "user_id")},
-//            inverseJoinColumns = @JoinColumn(name = "course_id"))
-//    private List<Course> courses;
-    //user constructor
     public User() {}
 
     public void addPost(Post post){
@@ -77,13 +62,8 @@ public class User {
 //    public List<Course> getCourses(){ return courses; }
 //
 //    public void setCourses(List<Course> courses) { this.courses = courses; }
+    public UserProfile getUserProfile() { return userProfile; }
 
-//    public UserRole getUserRole() { return userRole; }
-//
-//    public void setUserRole(UserRole userRole) { this.userRole = userRole; }
-//
-//    public UserProfile getUserProfile() { return userProfile; }
-//
     public void setUserProfile(UserProfile userProfile) { this.userProfile = userProfile; }
 
     public Long getId() {
