@@ -32,6 +32,7 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "post_id")
 
+
     private List<Post> posts;
 
     public List<Post> getPosts() {
