@@ -10,6 +10,7 @@ import java.util.List;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -31,6 +32,28 @@ public class User {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "post_id")
+    private Post post;
+
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
+    public Comment getComment() {
+        return comment;
+    }
+
+    public void setComment(Comment comment) {
+        this.comment = comment;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "comment_id")
+    private Comment comment;
 
 
     private List<Post> posts;
@@ -51,18 +74,7 @@ public class User {
         posts.add(post);
 
     }
-    ///ad course is a method.
-//    public List<Course> addCourse(Course course){
-//        if(courses == null)
-//            courses = new ArrayList<>();
-//        courses.add(course);
-//
-//        return courses;
-//    }
-//
-//    public List<Course> getCourses(){ return courses; }
-//
-//    public void setCourses(List<Course> courses) { this.courses = courses; }
+
     public UserProfile getUserProfile() { return userProfile; }
 
     public void setUserProfile(UserProfile userProfile) { this.userProfile = userProfile; }
