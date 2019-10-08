@@ -21,7 +21,6 @@ public class UserController {
         return ResponseEntity.ok(new JwtResponse(userService.login(user)));
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/user/list")
     public Iterable<User> listUsers() {
         return userService. listUsers();
