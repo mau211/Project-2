@@ -2,6 +2,7 @@ package com.example.TravelBuddy.models;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "POST" )
@@ -21,6 +22,10 @@ public class Post {
     @ManyToOne
     @JoinColumn(name="user_id")
     private User user;
+
+    @OneToMany
+    @JoinColumn(name="user_comment_id")
+    private List<Comment> comment;
 
     public Post() {}
 
