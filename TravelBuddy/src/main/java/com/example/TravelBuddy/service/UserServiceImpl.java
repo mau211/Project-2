@@ -8,14 +8,9 @@ import com.example.TravelBuddy.repository.PostRepository;
 import com.example.TravelBuddy.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -76,6 +71,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public String login(String username, String password) {
+        User newUser = userRepository.findByUsername(username);
+//      Code edited to not use default bCrypt for password.
+        if(newUser != null && password.equals(password)){
+            UserDetails userDetails = loadUserByUsername(username);
+            return jwtUtil.generateToken(userDetails);
+        }
+        return null;
+    }
+
+    @Override
     public String login(User user){
         User newUser = userRepository.findByUsername(user.getUsername());
 //      Code edited to not use default bCrypt for password.
@@ -101,4 +107,8 @@ public class UserServiceImpl implements UserService {
         return HttpStatus.OK;
     }
 
+    @Override
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        return null;
+    }
 }

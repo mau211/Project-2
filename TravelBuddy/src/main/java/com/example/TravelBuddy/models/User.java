@@ -2,7 +2,6 @@ package com.example.TravelBuddy.models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import sun.plugin.util.UserProfile;
 
 import javax.persistence.*;
 import java.util.ArrayList;
