@@ -2,7 +2,6 @@ package com.example.TravelBuddy.service;
 
 
 import com.example.TravelBuddy.config.JwtUtil;
-import com.example.TravelBuddy.models.Comment;
 import com.example.TravelBuddy.models.Post;
 import com.example.TravelBuddy.models.User;
 import com.example.TravelBuddy.repository.CommentRepository;
@@ -91,15 +90,6 @@ public class UserServiceImpl implements UserService {
 
         return userRepository.save(user);
     }
-//
-//    @Override
-//    public User addComment(Comment newComment, String username, long postId) {
-//        Comment Comment = commentRepository.findById(commentId).get();
-//        User user = getUser(username);
-//        user.addComment(newComment);
-//
-//        return userRepository.save(user);
-//    }
 
     @Override
     public HttpStatus deleteById(Long userId){

@@ -17,13 +17,13 @@ public class Comment {
 
     @ManyToOne(cascade = {CascadeType.DETACH,
             CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name="user_id")
+    @JoinColumn(name="user_id", nullable = false)
     private User user;
 
 
     @ManyToOne(cascade = {CascadeType.DETACH,
             CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name="post_id")
+    @JoinColumn(name="post_id", nullable = false)
     private Post post;
 
 

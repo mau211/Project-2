@@ -58,5 +58,4 @@ public class Post {
         this.description = description;
     }
 
-
 }

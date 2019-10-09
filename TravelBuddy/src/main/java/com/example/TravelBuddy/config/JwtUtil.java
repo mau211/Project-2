@@ -45,6 +45,7 @@ public class JwtUtil implements Serializable {
     }
 
     public Date getExpirationDateFromToken(String token) {
+
         return getClaimFromToken(token, Claims::getExpiration);
     }
 
@@ -62,3 +63,4 @@ public class JwtUtil implements Serializable {
                 .signWith(SignatureAlgorithm.HS512, secret).compact();    }
 
 }
+

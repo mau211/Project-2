@@ -31,32 +31,24 @@ public class User {
     private UserProfile userProfile;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "post_id")
-    private Post post;
+    private List<Post> posts;
 
 
-    public Post getPost() {
-        return post;
-    }
-
-    public void setPost(Post post) {
-        this.post = post;
-    }
-
-    public Comment getComment() {
-        return comment;
-    }
-
-    public void setComment(Comment comment) {
-        this.comment = comment;
-    }
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "comment_id")
-    private Comment comment;
+    private List<Comment> comments;
 
 
-    private List<Post> posts;
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+
 
     public List<Post> getPosts() {
         return posts;
