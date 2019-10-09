@@ -36,7 +36,6 @@ public class User {
 
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "comment_id")
     private List<Comment> comments;
 
 

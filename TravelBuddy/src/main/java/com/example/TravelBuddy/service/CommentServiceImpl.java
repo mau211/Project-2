@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 
 @Service
 public class CommentServiceImpl implements CommentService {
@@ -31,7 +33,9 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public Comment createComment(Comment newComment, String username, Long postId){
         User user = userRepository.findByUsername(username);
+        Post post = postRepository.findById(postId).get();
         newComment.setUser(user);
+        newComment.setPost(post);
         return commentRepository.save(newComment);
     }
 
