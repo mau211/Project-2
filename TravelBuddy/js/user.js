@@ -82,7 +82,7 @@ const createProfile = (event) => {
     alert('Please enter an address');
     return
   }
-  fetch('http://localhost:8080/{username}', {
+  fetch('http://localhost:8080/username', {
     method: 'POST',
     headers: {
       "Authorization": "Bearer " + userToken,
@@ -113,7 +113,7 @@ const createProfile = (event) => {
 };
 
 function getProfile(func){
-  fetch('http://localhost:8080/{username}', {
+  fetch('http://localhost:8080/username', {
     method: 'GET',
     headers: {
       "Authorization": "Bearer " + userToken,
