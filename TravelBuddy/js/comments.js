@@ -23,7 +23,7 @@ const newComment = (event) => {
   };
   console.log(thisComment, 'thisComment');
   console.log(event, 'event')
-  fetch('http://localhost:8181/comment/'+postNum, {
+  fetch('http://localhost:8080/comment/'+postNum, {
     method: 'POST',
     headers: {
       "Authorization": "Bearer " + currentUser,
@@ -91,7 +91,7 @@ function iterateCmmForLocal(res, event){
 };
 
 const deleteComment = (id) => {
-  fetch('http://thesi.generalassemb.ly:8080/comment/'+id, {
+  fetch('http://localhost:8080/comment/'+id, {
     method: 'DELETE',
     headers: {
       "Authorization": "Bearer " + currentUser,
@@ -108,7 +108,7 @@ const deleteComment = (id) => {
 };
 
 const getCommentsByPostId = (id, func, event) => {
-  fetch('http://thesi.generalassemb.ly:8080/post/' +id +'/comment', {
+  fetch('http://localhost:8080/post/' +id +'/comment', {
     method: 'GET',
     headers: {
       "Content-Type": "application/json"
@@ -207,7 +207,7 @@ function showLocalComments(event){
 };
 
 const getCommentsByUser = (htmlCollec) => {
-  fetch('http://thesi.generalassemb.ly:8080/user/comment', {
+  fetch('http://localhost:8080/user/comment', {
     method: 'GET',
     headers: {
       "Authorization": "Bearer " + currentUser,

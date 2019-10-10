@@ -3,7 +3,7 @@ const createPost = (event) => {
   const title = event.target.children[0].value;
   const description = event.target.children[1].value;
   console.log(event);
-  fetch('http://thesi.generalassemb.ly:8080/post', {
+  fetch('http://localhost:8080/post', {
     method: 'POST',
     headers: {
       "Authorization": "Bearer " + userToken,
@@ -28,7 +28,7 @@ const createPost = (event) => {
 };
 
 const listAllPosts = (func) => {
-  fetch('http://thesi.generalassemb.ly:8080/post/list', {
+  fetch('http://localhost:8080/post/list', {
     method: 'GET',
     headers: {
       "Content-Type": "application/json"
@@ -107,7 +107,7 @@ function postAllPosts(arr){
 };
 
 function getPostsByUser(token, func){
-  fetch('http://thesi.generalassemb.ly:8080/user/post', {
+  fetch('http://localhost:8080/user/post', {
     method: 'GET',
     headers: {
       "Authorization": "Bearer " + token,
@@ -156,7 +156,7 @@ function liveFeed(event){
 };
 
 function deletePost(postId){
-  fetch('http://thesi.generalassemb.ly:8080/post/'+postId, {
+  fetch('http://localhost:8080/post/'+postId, {
     method: 'DELETE',
     headers: {
       "Authorization": "Bearer " + localStorage.loginToken,
