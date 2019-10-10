@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/userStyles.css">
+    <link rel="stylesheet" href="css/liveFeed.css">
+    <script src="https://kit.fontawesome.com/074d7b3fc9.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+    <title>TRAVEL BUDDY</title>
+  </head>
+  <body>
+    <header>
+      <div class="header-wrap">
+        <div class="logo-wrap">
+          <a><i class="igloo fas fa-igloo "></i></a>
+          <div>
+            <h1 class="logo">TRAVEL BUDDY</h1>
+            <h2 class="sub-logo">TRAVEL FORUM</h2>
+          </div>
+        </div>
+        <div class="userHeader">
+            <img src="https://api.adorable.io/avatars/57/j@adorable.io.png" alt="user pic">
+            <span></span>
+            <i class="settings-icon fa fa-cogs" aria-hidden="true"></i>
+            <form onSubmit="liveFeed(event)">
+              <button type="submit">LIVE FEED</button>
+            </form>
+            <form onSubmit="logOut(event)">
+              <button type="submit">LOG OUT</button>
+            </form>
+        </div>
+    </header>
+
+    <section class="create-profile">
+      <div id="profileWrapper">
+        <div class="profileInfo" id="username">
+          USERNAME:
+          <span id="innerUser"></span>
+        </div>
+        <div id="userProfile">
+          <span class="profileInfo">
+            BACKUP EMAIL:
+            <span id="backUpEmail"></span>
+          </span>
+          <span class="profileInfo">
+            MOBILE:
+            <span id="mobile"></span>
+          </span>
+          <span class="profileInfo">
+            ADDRESS:
+            <span id="address"></span>
+          </span>
+        </div>
+        <form class="profile-form" onSubmit="createProfile(event)">
+          <input id="create-backup-email" type="text" placeholder="Backup Email"/>
+          <input id="create-mobile" type="text" placeholder="Phone #"/>
+          <input id="create-address" type="text" placeholder="Address"/>
+          <input class="sub" type="submit" value="SAVE PROFILE">
+        </form>
+      </div>
+    </section>
+    <aside>
+      <section>
+        <div class="livePost" style="display: none;">
+          <span class="liveUser">
+            <span>UserName</span>
+            <span>Post id:</span>
+          </span>
+          <h3 class="liveTitle">Title</h3>
+          <span class="liveDescription">Description</span>
+          <i class="far fa-comment-alt showLiveCmm" onclick="showLiveComments(event)"></i>
+          <section class="liveCommentsArea" style="display: none;">
+              <!-- <i class="fas fa-trash"></i> -->
+              <form class="liveInputWrap" onSubmit="newComment(event)">
+                <textarea class="liveCmmInput" placeholder="LEAVE A COMMENT..."></textarea>
+                <button class="addLiveNewCmm" type="submit">POST</button>
+              </form>
+            <div class="livePostedCmm" style="display: none;">
+              <h2 class="liveCmmUsername">George</h2>
+              <span class="liveCmmMsg">Some Message</span>
+                <!-- <i class="fas fa-trash"></i> -->
+            </div>
+
+          </section>
+        </div>
+      </section>
+    </aside>
+
+    <div class="containerLanding">
+
+      <div class="container-post">
+        <form onSubmit="createPost(event)" class="postForm">
+          <input
+              type="text"
+              class="title"
+              placeholder="POST TITLE"
+          />
+          <textarea class="description" placeholder="NEW POST"></textarea>
+          <button class="newPost" type="submit">POST</button>
+        </form>
+      </div>
+
+      <article class="post-temp">
+          <div class="top-bar">
+            <div class="user-icon4"></div>
+            <!-- USERNAME TO POPULATE HERE -->
+            <h3 class="messageUserName"></h3>
+          </div>
+
+          <div class="content">
+            <!-- MESSAGE TO POPULATE HERE -->
+            <h3 class="titleMsg"></h3>
+            <p class="message"></p>
+          </div>
+
+          <a class="comment" onclick="showLocalComments(event)">
+            <i class="far fa-comment-alt"></i>
+          </a>
+
+          <section class="commentsArea" style="display: none;" >
+          	<div class="active">
+
+              <div class="inputWrap" >
+                <form onSubmit="newComment(event)">
+                  <textarea class="commentInput" placeholder="LEAVE A COMMENT..."></textarea>
+                  <button class="newComment" type="submit">POST</button>
+                </form>
+              </div>
+
+              <div class="postedComment" style="display: none;">
+                <h2 class="sub-username">George</h2>
+                <div class="sub-active-icons">
+                  <p class="sub-message">Some Message</p>
+                </div>
+              </div>
+
+            </div>
+
+
+          </section>
+
+    	</article>
+
+    </div>
+    <div class="trash" style="display: none;">
+      <i class="fas fa-trash"></i>
+    </div>
+    <footer>
+      <p>&copy; 2019 TRAVEL BUDDY</p>
+    </footer>
+    <script type="text/javascript" src="js/user.js"></script>
+    <script type="text/javascript" src="js/posts.js"></script>
+    <script type="text/javascript" src="js/comments.js"></script>
+  </body>
+</html>

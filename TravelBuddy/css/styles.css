@@ -1,0 +1,277 @@
+* {
+  font-family:'Raleway', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+/* -------body styles-------- */
+body {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* #93a8b5 */
+/* #edfcff f5f9fa */
+/* --------header styles ------- */
+header {
+  z-index: 2;
+  width: 100%;
+  position: fixed;
+}
+
+.header-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #e8f7fa;
+  border-bottom: 8px solid #0aa5ff;
+  padding: 1.6em 1.5em;
+}
+
+.logo-wrap {
+  display: flex;
+}
+
+.logo-wrap div {
+  width: 151px;
+}
+
+.logo-wrap a {
+  margin-right: .5em;
+}
+
+h1.logo {
+  font-family: 'Anton', sans-serif;
+  color: #daf250;
+  font-size: 1.8em;
+  font-weight: 900;
+}
+
+h2.sub-logo {
+  font-size: .8em;
+}
+
+.settings-icon{
+  display: none;
+  right: 22em;
+  cursor: pointer;
+  color: #daf250;
+  opacity: 1;
+  transition: all .2s ease;
+  font-size: 1.3em;
+}
+
+.settings-icon:hover {
+  color: #69d2ff;
+}
+
+.igloo {
+  cursor: pointer;
+  color: #69d2ff;
+  font-size: 2.5em;
+}
+
+/* input[type=text],input[type=password],input[class=username] {
+  height: 1.5em;
+  width: 10em;
+  padding: 0 .5em;
+} */
+
+button {
+  position: relative;
+  background-color: #FFFFFF;
+  border: 3px solid #0aa5ff;
+  width: 80PX;
+  height: 30px;
+}
+
+input {
+  transition: all .5s ease-in-out;
+}
+
+.signUpLogIn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.signUpForm {
+  margin-bottom: .2em;
+}
+
+.collapseInputs {
+  position: relative;
+  width: 0px;
+  left: 6em;
+  padding: 0;
+}
+
+.showInputs {
+  position: static;
+  height: 1.5em;
+  width: 10em;
+  padding: 0 .5em;
+}
+
+.showInputs2 {
+  display:
+}
+
+/* .selectedForm {
+  border: 3px solid #0aa5ff;
+} */
+
+#profileWrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  bottom: 8em;
+  width: 600px;
+}
+
+#userProfile {
+  display: flex;
+  justify-content: space-around;
+  height: 75px;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: 800;
+  color: #daf250;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.profileInfo span {
+  color: #fff;
+  font-size: 0.8em;
+}
+
+#username {
+  align-self: center;
+  margin-bottom: 3em;
+  font-size: 1.5em;
+}
+
+.profile-form {
+  align-self: center;
+}
+
+
+.createPost {
+  margin-top: 5em;
+  margin-bottom: 3em;
+}
+
+#input-createPost {
+  padding: 0 2em;
+  width: 65em;
+  height: 30px;
+  border: 1.8px solid #daf250;
+}
+
+.containerLanding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-top: 8em;
+}
+
+article {
+  width: 700px;
+  height: 100%;
+  margin: 1.5em;
+  box-shadow: 10px 10px 30px grey;
+  margin: 45px;
+}
+
+.top-bar {
+  height: 40px;
+  background-color:#edfcff;
+  display: flex;
+  align-items: center;
+}
+
+.content {
+  width: 640px;
+    padding: 1em 1.8em;
+}
+
+.content img {
+  margin: 1em 0;
+  width: 100%;
+}
+
+.active {
+  display: flex;
+  margin-top: 1.2em;
+}
+
+a.comment {
+  display: block;
+  font-size: 1.5em;
+  color: #daf250;
+  font-weight: 600;
+  padding: 0 20px 10px 20px;
+  cursor: pointer;
+}
+
+.user-icon {
+  width: 30px;
+  height: 30px;
+  background-color: yellow;
+  margin-left: 20px;
+}
+
+.user-icon2 {
+  width: 30px;
+  height: 30px;
+  background-color: #4671bd;
+  margin-left: 20px;
+}
+
+.user-icon3 {
+  width: 30px;
+  height: 30px;
+  background-color: pink;
+  margin-left: 20px;
+}
+
+.user-icon4 {
+  width: 30px;
+  height: 30px;
+  background-color: orange;
+  margin-left: 20px;
+}
+
+h3 {
+  font-size: .8em;
+  margin-left: 10px;
+}
+
+/* ________post styles___________ */
+
+input[class=title]{
+  width: 689px;
+  height: 30px;
+  height: 30px;
+  border: 1.8px solid #daf250;
+  font-size: 1em;
+}
+
+footer {
+  background-color: #0aa5ff;
+  color: #000;
+  line-height: 3.5;
+  width: 100%;
+  text-align: center;
+  font-size: .8em;
+  margin-top: 30px;
+  z-index: 1;
+}
