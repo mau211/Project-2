@@ -61,8 +61,6 @@ function fillInProfile(userProfile = JSON.parse(localStorage.userProfile)){
     document.querySelector('.userHeader').style.display = 'flex';
     document.querySelector('#innerUser').innerText =
     userProfile.user.username;
-    document.querySelector('#backUpEmail').innerText =
-    userProfile.additionalEmail;
     document.querySelector('#mobile').innerText =
     userProfile.mobile;
     document.querySelector('#address').innerText =
@@ -72,14 +70,10 @@ function fillInProfile(userProfile = JSON.parse(localStorage.userProfile)){
 
 const createProfile = (event) => {
   event.preventDefault();
-  backupEmail = event.target[0].value;
+
   mobile = event.target[1].value;
   address = event.target[2].value;
   console.log(mobile);
-  if(backupEmail.length < 6 && !backupEmail.includes('@')){
-    alert('Please Enter a Valid Email');
-    return
-  }
   if(!mobile){
     alert('Please enter a phone number');
     return
@@ -95,7 +89,6 @@ const createProfile = (event) => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      additionalEmail: backupEmail,
       mobile: mobile,
       address: address
     })
