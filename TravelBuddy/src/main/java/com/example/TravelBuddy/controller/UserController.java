@@ -36,11 +36,6 @@ public class UserController {
         return userService.addPost(username, postId);
     }
 
-//    @PutMapping("/user/{username}/{postId}/commentId")
-//    public User addComment(@PathVariable String username, @PathVariable long postId){
-//        return userService.addComment(username, postId, )
-//    }
-//
 
     @DeleteMapping("/user/{userId}")
     public HttpStatus deleteUserById(@PathVariable Long userId) {
@@ -51,5 +46,6 @@ public class UserController {
     public String helloWorld() {
         return "Hello World!!";
     }
+
 
 }
