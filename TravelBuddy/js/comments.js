@@ -23,7 +23,7 @@ const newComment = (event) => {
   };
   console.log(thisComment, 'thisComment');
   console.log(event, 'event')
-  fetch('http://thesi.generalassemb.ly:8080/comment/'+postNum, {
+  fetch('http://localhost:8181/comment/'+postNum, {
     method: 'POST',
     headers: {
       "Authorization": "Bearer " + currentUser,

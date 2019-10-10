@@ -34,7 +34,7 @@ const saveSignUpToken = (token) => {
 
 
 const signUp = (email, pass, user) => {
-  fetch('http://thesi.generalassemb.ly:8080/signup', {
+  fetch('http://localhost:8181/signup', {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
@@ -74,7 +74,7 @@ const newUser = (event) => {
 // Seems like when you login, the token is unique and persists
 // throughout the rest of the items that require authentication
 const logIn = (email, pass) => {
-  fetch('http://thesi.generalassemb.ly:8080/login', {
+  fetch('http://localhost:8181/login', {
     method: 'POST',
     headers: {
       // "Authorization": "Bearer " + signUpToken,
