@@ -1,6 +1,5 @@
 package com.example.TravelBuddy.service;
 
-
 import com.example.TravelBuddy.models.Post;
 import com.example.TravelBuddy.models.User;
 import com.example.TravelBuddy.repository.PostRepository;
@@ -34,7 +33,6 @@ public class PostServiceImpl implements PostService {
         postRepository.deleteById(postId);
         return HttpStatus.OK;
     }
-
 }
 
 

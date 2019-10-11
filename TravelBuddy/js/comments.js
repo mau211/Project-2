@@ -18,12 +18,12 @@ const newComment = (event) => {
   thisComment = event.target.querySelector('.liveCmmInput');
   if(event.target.querySelector('.commentInput')){
     thisComment = event.target.querySelector('.commentInput');
-    postNum = event.path[4].dataset.id;
+    // postNum = event.path[4].dataset.id;
     local = true;
   };
   console.log(thisComment, 'thisComment');
   console.log(event, 'event')
-  fetch('http://localhost:8080/comment/'+postNum, {
+  fetch('http://localhost:8080/username/postid/comment', {
     method: 'POST',
     headers: {
       "Authorization": "Bearer " + currentUser,
