@@ -36,7 +36,6 @@ public class UserController {
         return userService.addPost(username, postId);
     }
 
-
     @DeleteMapping("/user/{userId}")
     public HttpStatus deleteUserById(@PathVariable Long userId) {
         return userService.deleteById(userId);
@@ -46,6 +45,4 @@ public class UserController {
     public String helloWorld() {
         return "Hello World!!";
     }
-
-
 }

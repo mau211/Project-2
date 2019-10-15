@@ -1,4 +1,4 @@
-const currentUser = localStorage.loginToken;
+const currentUser = localStorage.userToken;
 //I NEED TO GET POST BY ID BEFORE I CAN GET COMMENT - NEED TO INSERT POST
 //INTO WHERE 3 IS
 

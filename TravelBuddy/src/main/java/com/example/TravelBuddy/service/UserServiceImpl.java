@@ -87,7 +87,6 @@ public class UserServiceImpl implements UserService {
         Post post = postRepository.findById(postId).get();
         User user = getUser(username);
         user.addPost(post);
-
         return userRepository.save(user);
     }
 

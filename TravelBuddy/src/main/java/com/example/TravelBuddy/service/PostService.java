@@ -4,7 +4,7 @@ import com.example.TravelBuddy.models.Post;
 import org.springframework.http.HttpStatus;
 
 public interface PostService {
-    public Post createPost(Post post, String username);
+    public Post createPost(Post post);
 
     public Iterable<Post> listPosts();
 
